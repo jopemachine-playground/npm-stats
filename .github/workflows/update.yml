@@ -2,7 +2,8 @@ name: cron
 
 on:
   schedule:
-    - cron: "1 0 * * *"
+    # Runs on every week (At 00:00 on Sunday)
+    - cron: "0 0 * * 0"
   push:
     branches:
       - master
