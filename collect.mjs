@@ -1,51 +1,64 @@
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'fs-extra';
 import _ from 'lodash';
 import table from 'markdown-table';
 import markdownMagic from 'markdown-magic';
-import npmtotal from 'npmtotal'
-
+import getNpmDownloads from 'get-npm-downloads';
+import npmUserPackages from 'npm-user-packages';
+import pMap from 'p-map';
+import loudRejection from 'loud-rejection';
 import json from './utils/json.mjs';
 
-const { "npm-stats": key } = json('./package.json');
+loudRejection();
+
+const {'npm-stats': userId} = json('./package.json');
 const badgeStats = json('./stats.json');
 
-
-if (!key) {
-  throw new Error("Please add `npm-stats` to your package.json");
+if (!userId) {
+	throw new Error('Please add `npm-stats` to your package.json');
 }
 
 (async () => {
-  const stats = await npmtotal(key, {
-    startDate: "2017-01-01"
-  });
+	let allPkgInfos = (await npmUserPackages(userId)).filter(info => !info.name.startsWith('arvis'));
 
-  const sortedStats = stats.stats.map(pkg => {
-    const [name, count] = pkg;
-    return [`[${name}](https://www.npmjs.com/package/${name})`, count];
-  });
+	const tasks = allPkgInfos.map(pkgInfo => getNpmDownloads({
+		userId,
+		repository: pkgInfo.name,
+		period: 'total',
+	}).then(({downloads}) => {
+		pkgInfo.totalDownload = downloads;
+		return pkgInfo;
+	}));
 
-  badgeStats.message = `${stats.sum} Downloads`;
+	const mapper = res => res;
+	allPkgInfos = await pMap(tasks, mapper, {concurrency: 3});
 
-  await fs.writeFileSync("./stats.json", JSON.stringify(badgeStats, null, 2));
+	const downloadSum = _.reduce(allPkgInfos.map(info => info.totalDownload), (previous, curr) => previous + curr, 0);
 
-  generate(sortedStats, stats.sum);
+	badgeStats.message = `${downloadSum} Downloads`;
+
+	await fs.writeJSON('./stats.json', badgeStats, {encoding: 'utf-8', spaces: 2});
+
+	const sortedStats = allPkgInfos.sort((lhs, rhs) => lhs.totalDownload < rhs.totalDownload ? 1 : -1);
+
+	generate(sortedStats, downloadSum);
 })();
 
-function generate(data, sum) {
-  const config = {
-    transforms: {
-      PACKAGES() {
-        return table([
-          ["Name", "Downloads"],
-          ...data,
-          ["**Sum**", `**${sum}**`]
-        ]);
-      }
-    }
-  };
+const makeRow = data => [`[${data.name}](${data.links.npm})`, data.description, data.totalDownload, data.keywords?.slice(0, 3).join(', ') ?? ''];
 
-  markdownMagic(path.join("README.md"), config, () => {
-    console.log(`Updated total downloads - ${sum}`);
-  });
+function generate(stats, sum) {
+	const config = {
+		transforms: {
+			PACKAGES() {
+				return table([
+					['Name', 'Description', 'Total Downloads', 'Keywords'],
+					...stats.map(stat => makeRow(stat)),
+				]);
+			},
+		},
+	};
+
+	markdownMagic(path.join('README.md'), config, () => {
+		console.log(`Updated total downloads - ${sum}`);
+	});
 }

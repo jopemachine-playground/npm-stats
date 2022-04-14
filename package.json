@@ -18,10 +18,18 @@
   },
   "homepage": "https://github.com/maddhruv/github-readme-npm-downloads#readme",
   "dependencies": {
+    "fs-extra": "^10.0.1",
+    "get-npm-downloads": "^0.2.3",
+    "install": "^0.13.0",
     "lodash": "^4.17.21",
+    "loud-rejection": "^2.2.0",
     "markdown-magic": "^1.0.0",
     "markdown-table": "^2.0.0",
-    "npmtotal": "^1.4.0"
+    "npm-user-packages": "^3.0.0",
+    "p-map": "^5.3.0"
   },
-  "npm-stats": "maddhruv"
+  "npm-stats": "jopemachine",
+  "devDependencies": {
+    "xo": "^0.48.0"
+  }
 }

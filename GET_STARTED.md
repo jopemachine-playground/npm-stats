@@ -26,7 +26,3 @@ or for packages
 5. For updating the badge replace `maddhruv` in badge endpoint to your github username/orgname.
    https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2F`username`%2Fgithub-readme-npm-downloads%2Fmaster%2Fstats.json
 6. Enable `GitHub Actions` for your forked repo, as it is disabled by default for forks.
-
-## Ref
-
-- [npmtotal](https://github.com/maddhruv/npmtotal) - Find you npm download statistics

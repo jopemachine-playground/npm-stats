@@ -1,44 +1,38 @@
-# maddhruv npm-statistics
+# `jopemachine` npm-statistics
 
 ![NPM Stats](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmaddhruv%2Fgithub-readme-npm-downloads%2Fmaster%2Fstats.json)
 
-All of my npm packages and their downloads
+My npm packages and their stats
 
 ## Packages
 
 <!-- Please do not modify this auto generated content -->
 <!-- AUTO-GENERATED-CONTENT:START (PACKAGES) -->
-| Name                                                                                 | Downloads  |
-| ------------------------------------------------------------------------------------ | ---------- |
-| [post-merge-install](https://www.npmjs.com/package/post-merge-install)               | 166517     |
-| [types-directory](https://www.npmjs.com/package/types-directory)                     | 57276      |
-| [install-types](https://www.npmjs.com/package/install-types)                         | 22106      |
-| [engines-ok](https://www.npmjs.com/package/engines-ok)                               | 19580      |
-| [npmtotal](https://www.npmjs.com/package/npmtotal)                                   | 16951      |
-| [good-first-issue](https://www.npmjs.com/package/good-first-issue)                   | 8327       |
-| [rice](https://www.npmjs.com/package/rice)                                           | 7177       |
-| [props-validator](https://www.npmjs.com/package/props-validator)                     | 5556       |
-| [gst-states](https://www.npmjs.com/package/gst-states)                               | 3773       |
-| [types-sync](https://www.npmjs.com/package/types-sync)                               | 2964       |
-| [prepublish-ok](https://www.npmjs.com/package/prepublish-ok)                         | 2370       |
-| [web-workers](https://www.npmjs.com/package/web-workers)                             | 1934       |
-| [gatsby-transform-link](https://www.npmjs.com/package/gatsby-transform-link)         | 1807       |
-| [dumbbell](https://www.npmjs.com/package/dumbbell)                                   | 1725       |
-| [@arrant/button](https://www.npmjs.com/package/@arrant/button)                       | 1035       |
-| [clean-node](https://www.npmjs.com/package/clean-node)                               | 1022       |
-| [@arrant/theme](https://www.npmjs.com/package/@arrant/theme)                         | 888        |
-| [@rabbitsm/rsm](https://www.npmjs.com/package/@rabbitsm/rsm)                         | 744        |
-| [authorer](https://www.npmjs.com/package/authorer)                                   | 616        |
-| [ipopen](https://www.npmjs.com/package/ipopen)                                       | 573        |
-| [check-web-workers-support](https://www.npmjs.com/package/check-web-workers-support) | 478        |
-| [clean-deps](https://www.npmjs.com/package/clean-deps)                               | 354        |
-| [goandget](https://www.npmjs.com/package/goandget)                                   | 342        |
-| [enpmjs](https://www.npmjs.com/package/enpmjs)                                       | 321        |
-| [median-age](https://www.npmjs.com/package/median-age)                               | 283        |
-| [installed-dependencies](https://www.npmjs.com/package/installed-dependencies)       | 283        |
-| [console.gif](https://www.npmjs.com/package/console.gif)                             | 257        |
-| [nse-companies](https://www.npmjs.com/package/nse-companies)                         | 255        |
-| [check-support](https://www.npmjs.com/package/check-support)                         | 251        |
-| [banks](https://www.npmjs.com/package/banks)                                         | 105        |
-| **Sum**                                                                              | **325870** |
+| Name                                                                                                       | Description                                                                                | Total Downloads | Keywords                                |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | --------------- | --------------------------------------- |
+| [alfred-evernote-workflow](https://www.npmjs.com/package/alfred-evernote-workflow)                         | Evernote workflow for Alfred 4                                                             | 4655            | alfred,alfy,evernote                    |
+| [alfred-chrome-workflow](https://www.npmjs.com/package/alfred-chrome-workflow)                             | Chrome kernel based broswer workflow for Alfred 4                                          | 3848            | alfred,alfred-workflow,alfred4-workflow |
+| [code-replacer](https://www.npmjs.com/package/code-replacer)                                               | Replace codes line by line with regex for target files                                     | 2582            | code-replace,regex-match                |
+| [get-npm-downloads](https://www.npmjs.com/package/get-npm-downloads)                                       | Display npm download in console (also include lib)                                         | 2530            | npm,stat,downloads                      |
+| [@jopemachine/react-multi-email](https://www.npmjs.com/package/%40jopemachine%2Freact-multi-email)         | Forked from https://github.com/jsdevkr/react-multi-email                                   | 1691            |                                         |
+| [alfred-simple-email-fetcher](https://www.npmjs.com/package/alfred-simple-email-fetcher)                   | Alfred workflow that fetch and show emails from multiple accounts using imap               | 1601            | alfred,alfred-workflow,imap             |
+| [alfred-to-arvis](https://www.npmjs.com/package/alfred-to-arvis)                                           | Help to convert the info.plist file format of Alfred-workflow's to the arvis-workflow.json | 1345            | arvis,arvis-workflow,alfred             |
+| [case-cli](https://www.npmjs.com/package/case-cli)                                                         | Convert string case on your terminal as you want                                           | 1151            | clipboard,case,cli                      |
+| [rn-text-with-link](https://www.npmjs.com/package/rn-text-with-link)                                       | Create simple text component with hyperlink in React Native                                | 1005            | react-native,react native,text          |
+| [alfy-to-arvish](https://www.npmjs.com/package/alfy-to-arvish)                                             | Convert alfy workflow to arvish workflow (or vice versa)                                   | 922             | alfy,alfred,alfred-workflow             |
+| [alfred-deno-doc](https://www.npmjs.com/package/alfred-deno-doc)                                           | Search deno documentation through Alfred 4                                                 | 845             | alfred,alfred-workflow,deno             |
+| [alfred-kakaotalk-workflow](https://www.npmjs.com/package/alfred-kakaotalk-workflow)                       | Alfred 4 workflow for Kakaotalk                                                            | 604             | alfred,alfy,kakaotalk                   |
+| [alfred-nintendo-switch-price-compare](https://www.npmjs.com/package/alfred-nintendo-switch-price-compare) | Compare Nintendo Switch game prices by country through https://eshop-prices.com/           | 549             | alfred,alfy,alfred-workflow             |
+| [@jopemachine/trymodule](https://www.npmjs.com/package/%40jopemachine%2Ftrymodule)                         | It's never been easier to try nodejs modules!                                              | 515             |                                         |
+| [generator-arvis](https://www.npmjs.com/package/generator-arvis)                                           | Scaffold out an Arvis extension                                                            | 427             | yeoman-generator,plugin,boilerplate     |
+| [csv-to-keyvalue-file](https://www.npmjs.com/package/csv-to-keyvalue-file)                                 | Very simple csv converter                                                                  | 352             | csv,json,properties                     |
+| [create-md-post](https://www.npmjs.com/package/create-md-post)                                             | Customizable markdown post layout generator                                                | 351             | markdown,post,cli                       |
+| [read-filepath-from-clipboard](https://www.npmjs.com/package/read-filepath-from-clipboard)                 | Read file paths from clipboard, working on cross-platform                                  | 341             | clipboard,cli                           |
+| [@jopemachine/generator-alfred](https://www.npmjs.com/package/%40jopemachine%2Fgenerator-alfred)           | Scaffold out an Alfred workflow                                                            | 253             | yeoman-generator,plugin,boilerplate     |
+| [alfred-transform-quotemark](https://www.npmjs.com/package/alfred-transform-quotemark)                     | Transform all quotemarks to other quotemarks through Alfred                                | 234             | alfred,workflow,quotes                  |
+| [get-gh-downloads](https://www.npmjs.com/package/get-gh-downloads)                                         | Display github release download in console (also include lib)                              | 167             | github,github release,stat              |
+| [alfred-squoosh](https://www.npmjs.com/package/alfred-squoosh)                                             | Convert images through Squoosh in Alfred 4                                                 | 167             | alfred,workflow,alfy                    |
+| [alfred-awesome-stars](https://www.npmjs.com/package/alfred-awesome-stars)                                 | Search starred repository through 'awesome-stars'                                          | 144             | alfred,workflow,star                    |
+| [alfred-transform-markdown](https://www.npmjs.com/package/alfred-transform-markdown)                       | Transform texts with markdown form                                                         | 82              | alfred,workflow,quotes                  |
+| [alfred-one-thing](https://www.npmjs.com/package/alfred-one-thing)                                         | Set the text for the One Thing app                                                         | 62              | alfred,workflow,alfy                    |
 <!-- AUTO-GENERATED-CONTENT:END -->
