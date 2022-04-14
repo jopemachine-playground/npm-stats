@@ -44,7 +44,12 @@ if (!userId) {
 	generate(sortedStats, downloadSum);
 })();
 
-const makeRow = data => [`[${data.name}](${data.links.npm})`, data.description, data.totalDownload, data.keywords?.slice(0, 3).join(', ') ?? ''];
+const makeRow = data => [
+	`[${data.name}](${data.links.npm})`,
+	data.description,
+	data.totalDownload,
+	data.keywords?.slice(0, 3).map(string_ => `\`${string_}\``).join(', ') ?? '',
+];
 
 function generate(stats, sum) {
 	const config = {
