@@ -20,18 +20,31 @@ if (!userId) {
 
 (async () => {
 	let allPkgInfos = (await npmUserPackages(userId)).filter(info => !info.name.startsWith('arvis'));
-
-	const tasks = allPkgInfos.map(pkgInfo => getNpmDownloads({
-		userId,
-		repository: pkgInfo.name,
-		period: 'total',
-	}).then(({downloads}) => {
-		pkgInfo.totalDownload = downloads;
-		return pkgInfo;
-	}));
-
 	const mapper = res => res;
-	allPkgInfos = await pMap(tasks, mapper, {concurrency: 3});
+
+	const tasks = allPkgInfos.map(pkgInfo => {
+		const task1 = getNpmDownloads({
+			userId,
+			repository: pkgInfo.name,
+			period: 'total',
+		}).then(({downloads}) => {
+			pkgInfo.totalDownload = downloads;
+			return pkgInfo;
+		});
+
+		const task2 = getNpmDownloads({
+			userId,
+			repository: pkgInfo.name,
+			period: 'last-week',
+		}).then(({downloads}) => {
+			pkgInfo.weeklyDownload = downloads;
+			return pkgInfo;
+		});
+
+		return pMap([task1, task2], mapper);
+	});
+
+	await pMap(tasks, mapper, {concurrency: 3});
 
 	const downloadSum = _.reduce(allPkgInfos.map(info => info.totalDownload), (previous, curr) => previous + curr, 0);
 
@@ -48,6 +61,7 @@ const makeRow = data => [
 	`[${data.name}](${data.links.npm})`,
 	data.description,
 	data.totalDownload,
+	data.weeklyDownload,
 	data.keywords?.slice(0, 3).map(string_ => `\`${string_}\``).join(', ') ?? '',
 ];
 
@@ -56,7 +70,7 @@ function generate(stats, sum) {
 		transforms: {
 			PACKAGES() {
 				return table([
-					['Name', 'Description', 'Total Downloads', 'Keywords'],
+					['Name', 'Description', 'Total Downloads', 'Weekly Downloads', 'Keywords'],
 					...stats.map(stat => makeRow(stat)),
 				]);
 			},
