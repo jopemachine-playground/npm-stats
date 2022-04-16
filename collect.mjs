@@ -18,8 +18,13 @@ if (!userId) {
 	throw new Error('Please add `npm-stats` to your package.json');
 }
 
+const exclusiveList = [
+	'create-md-post',
+	'arvis'
+];
+
 (async () => {
-	let allPkgInfos = (await npmUserPackages(userId)).filter(info => !info.name.startsWith('arvis'));
+	let allPkgInfos = (await npmUserPackages(userId)).filter(info => !exclusiveList.some(exclusive => info.name.includes(exclusive)));
 	const mapper = res => res;
 
 	const tasks = allPkgInfos.map(pkgInfo => {
@@ -47,6 +52,7 @@ if (!userId) {
 	await pMap(tasks, mapper, {concurrency: 3});
 
 	const downloadSum = _.reduce(allPkgInfos.map(info => info.totalDownload), (previous, curr) => previous + curr, 0);
+	const counts = allPkgInfos.length;
 
 	badgeStats.message = `${downloadSum} Downloads`;
 
@@ -54,7 +60,7 @@ if (!userId) {
 
 	const sortedStats = allPkgInfos.sort((lhs, rhs) => lhs.totalDownload < rhs.totalDownload ? 1 : -1);
 
-	generate(sortedStats, downloadSum);
+	generate(sortedStats, downloadSum, counts);
 })();
 
 const makeRow = data => [
@@ -65,11 +71,15 @@ const makeRow = data => [
 	data.keywords?.slice(0, 3).map(string_ => `\`${string_}\``).join(', ') ?? '',
 ];
 
-function generate(stats, sum) {
+const makeHeader = (counts) => {
+	return `There are \`${counts}\` packages\n\n`
+};
+
+function generate(stats, sum, counts) {
 	const config = {
 		transforms: {
 			PACKAGES() {
-				return table([
+				return makeHeader(counts) + table([
 					['Name', 'Description', 'Total Downloads', 'Weekly Downloads', 'Keywords'],
 					...stats.map(stat => makeRow(stat)),
 				]);
