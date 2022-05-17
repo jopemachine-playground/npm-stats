@@ -19,7 +19,7 @@
   "homepage": "https://github.com/maddhruv/github-readme-npm-downloads#readme",
   "dependencies": {
     "fs-extra": "^10.0.1",
-    "get-npm-downloads": "^0.2.4",
+    "get-npm-downloads": "^0.2.5",
     "lodash": "^4.17.21",
     "loud-rejection": "^2.2.0",
     "markdown-magic": "^1.0.0",
